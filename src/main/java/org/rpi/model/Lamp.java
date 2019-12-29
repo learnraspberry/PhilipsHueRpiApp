@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Lamp {
+    private String id;
     private String name;
     private LampState state;
 }
