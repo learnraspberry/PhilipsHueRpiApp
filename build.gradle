@@ -42,11 +42,14 @@ task appNpmBuild(type: NpmTask) {
     description = "Builds production version of the webapp"
     workingDir = file("${project.projectDir}/frontend")
     args = ["run", "build"]
+    mustRunAfter appNpmInstall
 }
 
 task copyWebApp(type: Copy) {
     from 'frontend/build'
     into 'build/resources/main/static/.'
+    mustRunAfter appNpmBuild
+
 }
 
 dependencies {
@@ -55,3 +58,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("junit:junit")
 }
+
+bootJar.dependsOn appNpmInstall
+bootJar.dependsOn appNpmBuild
+bootJar.dependsOn copyWebApp
