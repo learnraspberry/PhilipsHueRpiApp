@@ -15,14 +15,13 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
 @Slf4j
 @Getter
 @Setter
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 public class LampController {
 

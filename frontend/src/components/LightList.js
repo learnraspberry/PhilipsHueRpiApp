@@ -6,7 +6,7 @@ const LightList = (props) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/lamps')
+        fetch('lamps')
             .then((res) => res.json())
             .then((res) => {
                 setData(res);
@@ -27,7 +27,7 @@ const LightList = (props) => {
                 <ListGroup.Item key={item.id} action onClick={(e) => {
                     setLoading(true);
 
-                    fetch('http://localhost:8080/lamp/' + item.id + '?state=' + !item.state.on, {
+                    fetch('lamp/' + item.id + '?state=' + !item.state.on, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
